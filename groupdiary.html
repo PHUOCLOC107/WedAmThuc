@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5</title>
+    <style>
+        /* Thêm CSS để trang trí giao diện nếu cần */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        #diary-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #diary {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #fff;
+            width: 50%; /* Cố định chiều rộng danh sách công việc */
+        }
+
+        #input-container {
+            width: 50%; /* Cố định chiều rộng phần nhập liệu */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #d0a772;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #df2241;
+        }
+
+        /* Hiệu ứng chuyển động cho danh sách công việc */
+        #diary div {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column; /* Đặt chế độ xếp cột cho các phần tử bên trong */
+            transition: transform 0.3s ease;
+        }
+
+        #diary div:hover {
+            transform: scale(1.02);
+        }
+
+        .task-info {
+            flex: 1; /* Đưa task-info về kích thước tự động để nút xóa có thể sang bên phải */
+        }
+
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            align-self: flex-end; /* Dùng align-self để căn nút xóa sang phải */
+            margin-top: 10px; /* Thêm margin giữa nút xóa và thông tin công việc */
+        }
+
+        .delete-button:hover {
+            background-color: #d32f2f;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Group Diary - Week 5</h1>
+
+    <div id="diary-container">
+        <!-- Phần nhập liệu -->
+        <div id="input-container">
+            <h2>Thêm công việc mới:</h2>
+            <label for="stt">STT:</label>
+            <input type="text" id="stt" required>
+            <br>
+            <label for="tenCongViec">Tên công việc:</label>
+            <input type="text" id="tenCongViec" required>
+            <br>
+            <label for="nguoiThucHien">Người thực hiện:</label>
+            <input type="text" id="nguoiThucHien" required>
+            <br>
+            <label for="ngayBatDau">Ngày bắt đầu:</label>
+            <input type="text" id="ngayBatDau" required>
+            <br>
+            <label for="ngayKetThuc">Ngày kết thúc:</label>
+            <input type="text" id="ngayKetThuc" required>
+            <br>
+            <button onclick="addTask()">Thêm công việc</button>
+        </div>
+
+        <!-- Phần hiển thị danh sách công việc -->
+        <div id="diary"></div>
+    </div>
+
+    <script>
+        // Mảng lưu trữ công việc
+        var tasks = [];
+
+        // Hàm để thêm công việc mới
+        function addTask() {
+            var stt = document.getElementById("stt").value;
+            var tenCongViec = document.getElementById("tenCongViec").value;
+            var nguoiThucHien = document.getElementById("nguoiThucHien").value;
+            var ngayBatDau = document.getElementById("ngayBatDau").value;
+            var ngayKetThuc = document.getElementById("ngayKetThuc").value;
+
+            // Kiểm tra xem các trường có được nhập đầy đủ không
+            if (stt && tenCongViec && nguoiThucHien && ngayBatDau && ngayKetThuc) {
+                // Tạo đối tượng công việc mới
+                var task = {
+                    stt: stt,
+                    tenCongViec: tenCongViec,
+                    nguoiThucHien: nguoiThucHien,
+                    ngayBatDau: ngayBatDau,
+                    ngayKetThuc: ngayKetThuc
+                };
+
+                // Thêm công việc vào cuối mảng
+                tasks.push(task);
+
+                // Hiển thị lại danh sách công việc
+                displayTasks();
+
+                // Đặt lại giá trị trường nhập
+                document.getElementById("stt").value = "";
+                document.getElementById("tenCongViec").value = "";
+                document.getElementById("nguoiThucHien").value = "";
+                document.getElementById("ngayBatDau").value = "";
+                document.getElementById("ngayKetThuc").value = "";
+            } else {
+                alert("Vui lòng điền đầy đủ thông tin công việc.");
+            }
+        }
+
+        // Hàm để hiển thị danh sách công việc
+        function displayTasks() {
+            var diaryContainer = document.getElementById("diary");
+            
+            // Xóa nội dung cũ để cập nhật danh sách
+            diaryContainer.innerHTML = "";
+
+            // Hiển thị từng công việc và nút xóa
+            tasks.forEach(function(task, index) {
+                var taskDiv = document.createElement("div");
+                taskDiv.innerHTML = '<div class="task-info"><strong>STT:</strong> ' + task.stt +
+                                    "<br><strong>Tên công việc:</strong> " + task.tenCongViec +
+                                    "<br><strong>Người thực hiện:</strong> " + task.nguoiThucHien +
+                                    "<br><strong>Ngày bắt đầu:</strong> " + task.ngayBatDau +
+                                    "<br><strong>Ngày kết thúc:</strong> " + task.ngayKetThuc + '</div>' +
+                                    '<button class="delete-button" onclick="deleteTask(' + index + ')">Xóa</button>';
+
+                diaryContainer.appendChild(taskDiv);
+            });
+        }
+
+        // Hàm để xóa công việc theo index
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            displayTasks();
+        }
+    </script>
+
+</body>
+</html>
