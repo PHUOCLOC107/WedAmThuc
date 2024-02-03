@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-	 <title>Ẩm Thực Việt Nam</title>  
+    <title>Ẩm Thực Việt Nam</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -25,8 +25,12 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
+	<!-- Input Upload CSS -->
+    <link rel="stylesheet" href="css/input-upload.css">
 
-    
+
+  
+
 </head>
 
 <body>
@@ -68,145 +72,53 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>Special Menu</h1>
+					<h1>Upload</h1>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- End All Pages -->
 	
-	<!-- Start Menu -->
-	<div class="menu-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="heading-title text-center">
-						<h2> Menu</h2>
-						<p>Đôi nét một vài mòn tiêu biểu:</p>
+	<!-- Start Gallery -->
+	<div class="gallery-box">
+		<div class="container-fluid shadow-sm p-5 rounded" style="width: 50%; height: fit-content;">
+			<form action="#" method="post">
+				<div class="form-group">
+					<label for="dishName">Dish Name:</label>
+					<input type="text" class="form-control rounded" id="dishName" placeholder="Enter the dish name">
+				</div>
+				<div class="form-group">
+					<label for="address">Restaurant Address:</label>
+					<input type="text" class="form-control rounded" id="address" placeholder="Enter the restaurant address">
+				</div>
+				<div class="form-group">
+					<label for="cookingRecipe">Cooking Recipe:</label>
+					<textarea class="form-control rounded" id="cookingRecipe" rows="3"></textarea>
+				</div>
+
+				<div class="zone" id="zone">
+					<div id="dropZ">
+					  <i class="fa fa-cloud-upload"></i>
+					  <div>Drag and drop your file here</div>                    
+					  <span>OR</span>
+					  <div class="selectFile shadow-sm rounded">       
+						<label for="file">Select file</label>                   
+						<input id="fileInput" type="file" name="files[]" id="file" multiple>
+					  </div>
+					  <!-- <p>File size limit : 10 MB</p> -->
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="special-menu text-center">
-						<div class="button-group filter-button-group">
-							<button class="active" data-filter="*">All</button>
-							<button data-filter=".drinks">Drinks</button>
-							<button data-filter=".lunch">Breakfast</button>
-							<button data-filter=".dinner">Dinner</button>
-						</div>
-					</div>
+
+				<div>
+					<img class="d-none" id="previewImage" src="#" alt="Ảnh xem trước" />
 				</div>
-			</div>
-				
-			<div class="row special-list">
-				<div class="col-lg-4 col-md-6 special-grid drinks">
-					<div class="gallery-single fix">
-						<img src="images/CAFE.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Cafe Đá hay Cafe Đen</h4>
-							<p>Là một món không thể thiếu ở mỗi buổi sáng của hầu hết người Việt Nam</p>
-							<p>Có thể uống kèm với đường hoặc sữa</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid drinks">
-					<div class="gallery-single fix">
-						<img src="images/MILK TEA.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Trà Sữa</h4>
-							<p>Một thức uống không thể thiếu của giới trẻ hiện nay.</p>
-							<p>Được kết hợp chung với nhiều loại topping khác nhau để tăng hương vị.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid drinks">
-					<div class="gallery-single fix">
-						<img src="images/tai-sao-che-tahi-nguyen-ngon-nhat.webp" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Trà hay Chè</h4>
-							<p>Là thức uống ưa thích của những cao tuổi mỗi buổi sáng hoặc trong những cuộc trò chuyện.</p>
-							<p>Điển hình là chè Thái Nguyên.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid lunch">
-					<div class="gallery-single fix">
-						<img style= "height:200px; width: 350px;" src="images/banh mi.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Bánh Mì</h4>
-							<p>Một món ăn khá phổ biển có thể gặp ở hầu hết mọi nơi ở Việt Nam</p>
-							<p>Được kết hợp với nhiều lại đồ ăn khác nhau.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid lunch">
-					<div class="gallery-single fix">
-						<img src="images/bunbo.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Bún Bò Huế</h4>
-							<p>Đặc sản của xứ Huế</p>
-							<p>Ăn kèm với rau sống để tăng thêm hương vị.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid lunch">
-					<div class="gallery-single fix">
-						<img src="images/pho.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Phở</h4>
-							<p>Một món ăn truyền thống của người Việt Nam.</p>
-							<p>Có thể ăn cùng với thịt gà hoặc thịt bò.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid dinner">
-					<div class="gallery-single fix">
-						<img style= "height:230px; width: 350px;" src="images/thit-kho-tau-1.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Thịt Kho Trứng</h4>
-							<p>Một món ăn truyền thống trong ngày Tết.</p>
-							<p>Được ăn kèm với rau sống hoặc dưa cải muối.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid dinner">
-					<div class="gallery-single fix">
-						<img src="images/khoqua.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Canh Khổ Qua</h4>
-							<p>Cũng là món ăn truyền thống trong ngày tết của người Việt Nam.</p>
-							<p>Được quan niệm để đem hết cái khổ cực đi.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid dinner">
-					<div class="gallery-single fix">
-						<img src="images/banhxeo.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Bánh Xèo</h4>
-							<p>Một món ăn ra đời khá lâu năm ở Việt Nam.</p>
-							<p>Bên trong được đi kèm với rau, tôm, thịt cắt mỏng. Ăn kèm với nước mắm.</p>
-							
-						</div>
-					</div>
-				</div>
-				
-			</div>
+
+				<button type="submit" class="btn btn-primary rounded">Create</button>
+			</form>
 		</div>
 	</div>
-	<!-- End QT -->
-	
+	<!-- End Gallery -->
 
-	
 	<!-- Start Contact info -->
 	<div class="contact-imfo-box">
 		<div class="container">
@@ -306,5 +218,35 @@
 	<script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/upload.js"></script>
+	<script>
+		$(document).bind('dragover', function (e) {
+    var dropZone = $('.zone'),
+        timeout = window.dropZoneTimeout;
+    if (!timeout) {
+        dropZone.addClass('in');
+    } else {
+        clearTimeout(timeout);
+    }
+    var found = false,
+        node = e.target;
+    do {
+        if (node === dropZone[0]) {
+            found = true;
+            break;
+        }
+        node = node.parentNode;
+    } while (node != null);
+    if (found) {
+        dropZone.addClass('hover');
+    } else {
+        dropZone.removeClass('hover');
+    }
+    window.dropZoneTimeout = setTimeout(function () {
+        window.dropZoneTimeout = null;
+        dropZone.removeClass('in hover');
+    }, 100);
+});
+	</script>
 </body>
 </html>
