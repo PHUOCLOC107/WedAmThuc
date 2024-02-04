@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ẩm Thực Việt Nam</title>
+</head>
+<style>
+* {
+    margin: 5px 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    font-family: monospace;
+    width: 60%;
+    box-shadow: 0 0 5px #cfa671;
+    border-radius: 10px;
+}
+.container>h1,.container>p {
+    text-align: center;
+}
+.head {
+    text-transform: uppercase;
+    margin: 20px;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    color: #cfa671;
+}
+.commentbox {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.commentbox>img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+.form_group {
+    
+    margin: 0 auto 1.25 auto;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+.form_control {
+    font-size: 16px;
+    display: block;
+    width: 30%;
+    height: 2.2em;
+    color: #495057;
+    padding: 0.375rem 0.75rem;
+    background-color: #fff;
+    border: 1px solid #a3a3a3;
+    background-clip: padding-box;
+    border-radius: 0.5rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.content {
+    width: 100%;
+}
+
+.content>input {
+    border-bottom: 2px solid #cfa671;
+}
+.user {
+    font-size: 20px;
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    color: #404040;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.commentinput>input {
+    font-size: 20px;
+    border: none;
+    padding: 10px;
+    padding-left: 0;
+    outline: none;
+    border-bottom: 2px solid #cfa671;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+.buttons {
+    font-size: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #808080;
+}
+
+.buttons button {
+    width: 200px;
+    height: 50px;
+    padding: 5px 10px;
+    background: rgb(175, 175, 175);
+    color: #cbcbcb;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.buttons button.abled {
+    background:#fff;
+    color: #d0a267;
+    border: 3px solid #d0a061;
+    border-radius: 10px;
+}
+
+.notify {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.notify>input {
+    margin-right: 5px;
+}
+
+.parents {
+    display: flex;
+    margin-top: 30px;
+}
+.parents h1 {
+    font-size: 1.5em;
+    color: #a47639;
+}
+.parents h2 {
+    font-size: 1.3em;
+    color: #d29e5b;
+}
+.parents p {
+    font-size: 1.1em;
+}
+.parents>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.date {
+    color: #5e5e5e;
+    font-size: 0.9em;
+}
+.card {
+
+    display: flex;
+    flex-direction: column;
+    page-break-after: 1em 0;
+  }
+  
+  .heading {
+    font-size: 1em;
+    color: #555;
+  }
+  
+  .stars i {
+    font-size: 1.5em;
+    color: gold;
+    position: relative;
+  }
+  
+  .stars div {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+  }
+  
+  .stars div:nth-child(1) {
+    left: 0;
+  }
+  
+  .stars div:nth-child(2) {
+    right: 0;
+  }
+  
+  .rating {
+    font-size: 1em;
+    color: #808080;
+  }</style>
+<body>
+  
+    <div class="container">
+        <h1>Comment</h1>
+        <p>Đánh giá của thực khách</p>
+        <div><span id="comment">0</span> Bình luận</div>
+        <div class="comments">
+            <div class="parents">
+                <img src="images/guest.png">
+                <div>
+                    <h1> Thực khách</h1>
+                    <div> <span class="date">00:00:00 1/12/2023</span> </div>
+                    <h2>Món: Canh Khổ Qua</h2>
+                    <p>Đánh giá: 3 sao</p>
+                    <p>Bình luận: Tạm</p>
+                </div>
+            </div>
+            <div class="parents">
+                <img src="images/user.png">
+                <div>
+                    <h1> Khang &nbsp;&nbsp;</h1>
+                    <div> <span class="date">23:59:59 24/12/2023</span> </div>
+                    <h2>Món: Trà sữa</h2>
+                    <p>Đánh giá: 5 sao</p>
+                    <p>Bình luận: Nice :))</p>
+                </div>
+            </div>  
+        </div>
+        <div class="head">
+            <h1>Viết Bình Luận</h1>
+        </div>
+        <div class="commentbox">
+            <img src="images/guest.png">
+            <div class="content">
+                <h3>Bình luận với tên: </h3>
+                <input type="text" value="Thực khách" class="user">
+
+                <div class="commentinput">
+                    <div class="form_group">
+                        <p>Chọn món ăn bạn muốn bình luận:</p>
+                        <select id="item" class="form_control">
+                            <option value="Cafe đá hay Cafe đen">Cafe đá hay Cafe đen</option>
+                            <option value="Trà sữa">Trà sữa</option>
+                            <option value="Trà hay Chè">Trà hay Chè</option>
+                            <option value="Bánh Mì">Bánh Mì</option>
+                            <option value="Phở">Phở</option>
+                            <option value="Bún Bò Huế">Bún Bò Huế</option>
+                            <option value="Bánh Xèo">Bánh Xèo</option>
+                            <option value="Canh Khổ Qua">Canh Khổ Qua</option>
+                            <option value="Thịt Kho Trứng">Thịt Kho Trứng</option>
+                        </select>
+                    </div>
+                    <div class="card">
+                        <p class="heading">Đánh giá :</p>
+                        <div class="stars">
+                            <i class="bx bx-star">
+                                <div></div>
+                                <div></div>
+                            </i>
+                            <i class="bx bx-star">
+                                <div></div>
+                                <div></div>
+                            </i>
+                            <i class="bx bx-star">
+                                <div></div>
+                                <div></div>
+                            </i>
+                            <i class="bx bx-star">
+                                <div></div>
+                                <div></div>
+                            </i>
+                            <i class="bx bx-star">
+                                <div></div>
+                                <div></div>
+                            </i>
+                        </div>
+                        <p class="rating"><span>0</span> sao</p>
+                    </div>
+                    <input type="text" placeholder="Ý kiến của bạn" class="usercomment">
+                    <div class="buttons">
+                        <button type="submit" disabled id="publish">Gửi Bình Luận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.onload = function() {
+            date1 = new date(2023 - 12 - 25);
+            date2 = new date(2023 - 12 - 31);
+            comments.innerHTML +=
+                `<div class="parents">
+        <img src="img/guest.png">
+        <div>
+            <h1> Thực khách &nbsp;&nbsp;</h1>
+            <div> <span class="date">${date1} </span> </div>
+            <h2>Món: Canh Khổ Qua &nbsp;&nbsp;<h2>
+            <p>Đánh giá: 3 sao</p>
+            <p>Bình luận: Hơi đắng</p>
+        </div>
+    </div>`;
+            comments.innerHTML +=
+                `<div class="parents">
+        <img src="img/user.png">
+        <div>
+            <h1> Khang &nbsp;&nbsp;</h1>
+            <div> <span class="date">${date2} </span> </div>
+            <h2>Món: Trà sữa &nbsp;&nbsp;<h2>
+            <p>Đánh giá: 5 sao</p>
+            <p>Bình luận: Nice :))</p>
+        </div>
+    </div>`;
+        }
+    </script>
+    <script>const clickAreas = document.querySelectorAll(".stars div");
+        const stars = document.querySelectorAll(".stars i");
+        
+        clickAreas.forEach((area, i) => {
+          area.addEventListener("click", () => {
+            stars.forEach((star) => (star.className = "bx bx-star"));
+            const starCount = (i + 1) / 2;
+        
+            for (let j = 0; j < starCount; j++) {
+              if (starCount - j === 0.5 && j === starCount - 0.5) {
+                stars[j].className = "bx bxs-star-half";
+              } else {
+                stars[j].className = "bx bxs-star";
+              }
+            }
+        
+            document.querySelector(".rating span").textContent = starCount;
+          });
+        });
+        
+        document.getElementById("comment").textContent = 2;
+        
+        "use strict";
+        const userId = {
+            name: null,
+            identity: null,
+            image: null,
+            message: null,
+            date: null
+        }
+        const userComment = document.querySelector(".usercomment");
+        const publishBtn = document.querySelector("#publish");
+        const comments = document.querySelector(".comments");
+        const userName = document.querySelector(".user");
+        const item = document.getElementById("item");
+        const star = document.querySelector(".rating span");
+        userComment.addEventListener("input", e => {
+            if (!userComment.value) {
+                publishBtn.setAttribute("disabled", "disabled");
+                publishBtn.classList.remove("abled");
+            } else {
+                publishBtn.removeAttribute("disabled");
+                publishBtn.classList.add("abled");
+            }
+        })
+        
+        
+        function addPost() {
+            if (!userComment.value) return;
+            userId.name = userName.value;
+            if (userId.name === "Thực khách") {
+                userId.identity = false;
+                userId.image = "img/guest.png";
+            } else {
+                userId.identity = true;
+                userId.image = "img/user.png"
+            }
+        
+            userId.message = userComment.value;
+            userId.date = new Date().toLocaleString();
+            let published =
+                `<div class="parents">
+                    <img src="${userId.image}">
+                    
+                    <div>
+                        <h1> ${userId.name}&nbsp;&nbsp;</h1>
+                        <div> <span class="date">${userId.date}</span> </div>
+                        <h2>Món: ${item.value}&nbsp;&nbsp;</h2>
+                        <p>Đánh giá: ${star.textContent} sao</p>
+                        <p>Bình luận: ${userId.message}</p>
+                    </div>
+                </div>`;
+        
+            comments.innerHTML += published;
+            userComment.value = "";
+        
+            let commentNum = document.querySelectorAll(".parents").length;
+            document.getElementById("comment").textContent = commentNum;
+        }
+        
+        publishBtn.addEventListener("click", addPost)
+        
+        
+        </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

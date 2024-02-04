@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        
+        }
+        .tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+        .tab {
+            margin-right: 20px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .download-btn {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .download-link {
+            text-decoration: underline;
+            cursor: pointer;
+            color: blue;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="tabs">
+    <li class="tab" onclick="showTab('requirement')">Requirement</li>
+    <li class="tab" onclick="showTab('design')">Design</li>
+    <li class="tab" onclick="showTab('implement')">Implement</li>
+</ul>
+
+<div id="requirement" class="content">
+    <h2>Tab Requirement</h2>
+    <h3>Chức năng đăng tải</h3>
+    <p>
+        <p>Cho phép người dùng đăng tải các video, hình ảnh, địa chỉ quán ăn, công thức nấu ăn của họ.</p>
+        <p>Người thực hiện: Bùi Trọng Linh-21130420</p>
+        <p>Thời gian: 25/9/2023 - 25/12/2023</p>
+    </p>
+
+    <h3>Chức năng Đánh Giá và Bình Luận</h3>
+    <p>
+        <p>Cung cấp chức năng đánh giá và bình luận trực tiếp trên video công thức nấu ăn để tạo ra sự tương tác và phản hồi từ cộng đồng.</p>
+        <p>Người thực hiện:  Nguyễn Duy Khang-22130115 </p>
+        <p>Thời gian: 25/9/2023 - 25/12/2023</p>
+    </p>
+
+    <h3>Chức năng Tìm Kiếm và Bộ Lọc Tìm Kiếm</h3>
+    <p>
+        <p>Hệ thống tìm kiếm để người dùng có thể dễ dàng tìm kiếm và lọc các công thức nấu ăn dựa trên nhiều tiêu chí.</p>
+        <p>Người thực hiện:  Nguyễn Đình Kiên-22130130</p>
+        <p>Thời gian: 25/9/2023 - 25/12/2023 (Chưa Hoàn Thành)</p>
+    </p>
+
+    <h3>Chức năng Đăng Nhập, Đăng Ký</h3>
+    <p>
+        <p>Cho phép người dùng đăng ký và đăng nhập để tạo và quản lý tài khoản, đánh giá, và lưu lại các công thức ưa thích.</p>
+        <p>Người thực hiện:  Phan Thanh Huy-22130105 </p>
+        <p>Thời gian: 25/9/2023 - 25/12/2023</p>
+    </p>
+
+    <h3>Thiết kế Giao diện Web</h3>
+    <p>
+        <p>Gồm Menu hình ảnh, liên kết tổng hợp chức năng của các thành viên còn lại.</p>
+        <p>Người thực hiện:  Võ Phước Lộc-22130150 </p>
+        <p>Thời gian: 25/9/2023 - 1/1/2023</p>
+    </p>
+    <!-- Nội dung Tab Requirement -->
+</div>
+
+<div id="design" class="content" style="display: none;">
+    <h2>Tab Design</h2>
+    <!-- Nội dung Tab Design -->
+    <h3>Chức năng đăng nhập</h3>
+    <img src="images/login.jpg" style="width: 400px; height: auto;" alt="">
+    <p class="download-link" onclick="downloadImage('login.jpg', 'Design 1')" style="position: relative; left: 100px;">Download Design 1</p>
+
+    <h3 style="position: relative; left:600px ;bottom: 800px;">Chức năng đăng tải</h3>
+    <img  src="images/upload.jpg" style="width: 400px; height: 700px; position: relative; left: 500px; bottom: 800px;" alt="" >
+    <p  class="download-link" onclick="downloadImage('upload.jpg', 'Design 2')" style="position: relative; left: 620px;bottom: 800px;">Download Design 2</p>
+
+    <h3 style="position: relative; left: 1100px; bottom: 1600px;">Chức năng bình luận</h3>
+    <img src="images/comment.jpg" style="width: 400px; height: auto; position: relative; left: 1000px; bottom: 1600px;" alt="">
+    <p class="download-link" onclick="downloadImage('comment.jpg', 'Design 3')" style="position: relative; left: 1100px; bottom: 1600px;">Download Design 3</p>
+
+    <button class="download-btn" onclick="downloadAllDesigns()" style="position: relative; left: 650px; bottom: 1600px;">Download All</button>
+</div>
+
+<div id="implement" class="content" style="display: none;">
+    <h2>Tab Implement</h2>
+    <!-- Nội dung Tab Implement -->
+    <p><a href="signin.html">Chức năng đăng nhập</a></p>
+    <p><a href="upload.html">Chức năng đăng tải</a></p>
+    <p><a href="hhh.html">Chức năng đánh giá và bình luận</a></p>
+</div>
+
+<script>
+    function showTab(tabName) {
+        var tabs = ['requirement', 'design', 'implement'];
+        tabs.forEach(function (tab) {
+            var tabContent = document.getElementById(tab);
+            if (tab === tabName) {
+                tabContent.style.display = 'block';
+            } else {
+                tabContent.style.display = 'none';
+            }
+        });
+    }
+
+    function downloadImage(imageSrc, imageName) {
+        var a = document.createElement('a');
+        a.href = imageSrc;
+        a.download = imageName;
+        a.click();
+    }
+
+    function downloadAllDesigns() {
+        downloadImage('login.jpg', 'Design 1');
+        downloadImage('upload.jpg', 'Design 2');
+        downloadImage('comment.jpg', 'Design 3');
+    }
+</script>
+
+</body>
+</html>
